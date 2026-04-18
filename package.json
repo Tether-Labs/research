@@ -1,0 +1,25 @@
+{
+  "name": "@tether-labs/research",
+  "version": "0.1.0",
+  "description": "Experiment harness for measuring how LLM agents behave when they send email actions — plus a rule-based control layer for comparison.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "experiment": "tsx research/run-experiment.ts",
+    "experiment:batch": "tsx research/run-batch.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "openai": "^6.33.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}
