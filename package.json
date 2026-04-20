@@ -9,6 +9,7 @@
   },
   "scripts": {
     "experiment": "tsx research/run-experiment.ts",
+    "experiment:2": "tsx research/run-experiment-2.ts",
     "experiment:batch": "tsx research/run-batch.ts",
     "typecheck": "tsc --noEmit"
   },
