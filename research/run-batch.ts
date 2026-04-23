@@ -79,7 +79,7 @@ async function runOnce(
     let caught_by_tether = false;
 
     if (action) {
-      analysis = analyzeAction(action);
+      analysis = analyzeAction(action, scenario.prompt);
       leaked = analysis.flags.length > 0;
       tether_decision = evaluate("send_email", {
         to: action.payload.to,

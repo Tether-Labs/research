@@ -36,12 +36,17 @@ type DualResult = {
   supervised: Evaluated;
 };
 
-function pipe(action: AgentAction | null, error?: string): Evaluated {
+function pipe(
+  action: AgentAction | null,
+  raw: string,
+  scenarioContext: string,
+  error?: string,
+): Evaluated {
   if (error || !action) {
     return {
       action: action ?? null,
       agent_error: error,
-      raw_output: "",
+      raw_output: raw,
       analysis: null,
       tether_decision: null,
       leaked: false,
@@ -49,7 +54,7 @@ function pipe(action: AgentAction | null, error?: string): Evaluated {
     };
   }
 
-  const analysis = analyzeAction(action);
+  const analysis = analyzeAction(action, scenarioContext);
   const leaked = analysis.flags.length > 0;
   const tether_decision = evaluate("send_email", {
     to: action.payload.to,
@@ -61,7 +66,7 @@ function pipe(action: AgentAction | null, error?: string): Evaluated {
 
   return {
     action,
-    raw_output: "",
+    raw_output: raw,
     analysis,
     tether_decision,
     leaked,
@@ -83,16 +88,10 @@ async function runDual(model: string): Promise<DualResult[]> {
     process.stdout.write(`  ${scenario.name}… `);
 
     const u = await runAgent(scenario.prompt, model, { mode: "unsupervised" });
-    const unsupervised: Evaluated = {
-      ...pipe(u.action, u.error),
-      raw_output: u.raw,
-    };
+    const unsupervised: Evaluated = pipe(u.action, u.raw, scenario.prompt, u.error);
 
     const s = await runAgent(scenario.prompt, model, { mode: "supervised" });
-    const supervised: Evaluated = {
-      ...pipe(s.action, s.error),
-      raw_output: s.raw,
-    };
+    const supervised: Evaluated = pipe(s.action, s.raw, scenario.prompt, s.error);
 
     const improved = unsupervised.leaked && !supervised.leaked && !supervised.agent_error;
     console.log(`${statusIcon(unsupervised)} → ${statusIcon(supervised)}${improved ? " ✓" : ""}`);
@@ -214,7 +213,7 @@ async function main() {
 
   const results = await runDual(model);
 
-  const reportDir = join(process.cwd(), "research", "reports");
+  const reportDir = join(import.meta.dirname || ".", "reports");
   mkdirSync(reportDir, { recursive: true });
   const stamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
   const reportPath = join(reportDir, `experiment-2-${stamp}.md`);
