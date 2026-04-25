@@ -12,6 +12,7 @@
     "experiment:2": "tsx research/run-experiment-2.ts",
     "experiment:batch": "tsx research/run-batch.ts",
     "experiment:batch:2": "tsx research/run-batch-2.ts",
+    "experiment:batch:3": "tsx research/run-batch-3.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

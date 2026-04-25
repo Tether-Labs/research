@@ -3,3 +3,4 @@ dist/
 .env
 research/reports/*
 !research/reports/.gitkeep
+!research/reports/batch-exp*
