@@ -101,10 +101,6 @@ Reports are gitignored by default; generate them locally after runs.
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for scenario guidelines, local workflow, and PR checklist.
 
-## Social launch copy
-
-Use [LAUNCH_THREAD.md](./LAUNCH_THREAD.md) for a ready-to-post 6-part launch thread.
-
 ## Write-ups
 
 Findings from published experiments live at **[tether-labs.com/research](https://www.tether-labs.com/research)** (canonical) and on **[Tether Labs on Substack](https://tetherlabs.substack.com)** (syndication).
