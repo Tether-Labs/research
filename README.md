@@ -79,6 +79,17 @@ npm run experiment:batch:3
 
 Spec for the run: [`research/EXP3-SPEC.md`](./research/EXP3-SPEC.md).
 
+## Intelligent Systems Simulator v0
+
+Rule-based simulation of **trust decay → service switch** (no API key required for the default loop).
+
+```bash
+npm run sim:v0
+npm run sim:v0:analyze
+```
+
+Spec: [`research/intelligent-systems/SIM-v0-SPEC.md`](./research/intelligent-systems/SIM-v0-SPEC.md).
+
 ## What's in this repo
 
 | Path | Purpose |
@@ -93,6 +104,7 @@ Spec for the run: [`research/EXP3-SPEC.md`](./research/EXP3-SPEC.md).
 | `research/run-batch-2.ts` | Experiment 02 batch runner (15× × 19 × 2 modes, hybrid detector) |
 | `research/run-batch-3.ts` | Experiment 03 batch runner (adds enforcement decision node) |
 | `research/EXP3-SPEC.md` | Experiment 03 design doc — trigger rule, policy map, why judge-as-oracle is acknowledged circular |
+| `research/intelligent-systems/` | Simulator v0 — trust decay, service switching, batch + analyze |
 | `src/engine/` | Decision engine used to compare "would Tether intercept this?" |
 
 Reports are gitignored by default; generate them locally after runs.
@@ -110,6 +122,7 @@ Findings from published experiments live at **[tether-labs.com/research](https:/
 | 01 | The Unsupervised Agent | [tether-labs.com/research/01-unsupervised-agent](https://www.tether-labs.com/research/01-unsupervised-agent) |
 | 02 | The Supervised Agent | [tether-labs.com/research/02-supervised-agent](https://www.tether-labs.com/research/02-supervised-agent) |
 | 03 | Enforcement | [tether-labs.com/research/03-enforcement](https://www.tether-labs.com/research/03-enforcement) |
+| — | Whom agents trust (strategy) | [tether-labs.com/research/04-intelligent-systems-trust](https://www.tether-labs.com/research/04-intelligent-systems-trust) |
 
 ## License
 

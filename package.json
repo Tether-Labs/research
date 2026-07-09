@@ -13,6 +13,8 @@
     "experiment:batch": "tsx research/run-batch.ts",
     "experiment:batch:2": "tsx research/run-batch-2.ts",
     "experiment:batch:3": "tsx research/run-batch-3.ts",
+    "sim:v0": "tsx research/intelligent-systems/run-sim-v0.ts",
+    "sim:v0:analyze": "tsx research/intelligent-systems/analyze-sim-v0.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
